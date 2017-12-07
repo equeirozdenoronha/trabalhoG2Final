@@ -1,0 +1,47 @@
+<div class="card col-md-8" >
+  <div class="card-header text-center">
+    Cadastrar funcionario
+  </div>
+  <div class="card-body">
+    <form #cadastro="ngForm" novalidate>
+      <div class="row">
+        <div class="col-2">tipo:</div>
+        <div class="form-check col-sm-4">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="Radios" id="adminC" [(ngModel)]="funcionario.tipo" value="ADMIN"  required>
+            Administrativo
+          </label>
+        </div>
+        <div class="col-2"></div>
+        <div class="form-check col-sm-4">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="Radios" id="doceC" [(ngModel)]="funcionario.tipo" value="DOCENTE" required>
+            Docente
+          </label>
+        </div>
+      </div>
+      <div>
+        <legend class="col-form-legend">Pessoa</legend>
+        <select class="form-control" name="pessoa" [(ngModel)]="funcionario.pessoaId" required>
+          <option *ngFor="let pessoa of pessoas" [value]="pessoa.id">{{pessoa.nome}}</option>
+        </select>
+      </div>
+      <div>
+        <legend class="col-form-legend">Cargo</legend>
+        <select class="form-control" name="cargo" [(ngModel)]="funcionario.cargoId" required>
+          <option *ngFor="let cargo of cargos" [value]="cargo.id">{{cargo.nome}}</option>
+        </select>
+      </div>
+      <div>
+        <legend class="col-form-legend">funções</legend>
+        <select multiple class="form-control" name="funcoes" [(ngModel)]="funcionario.funcoes" required>
+          <option  *ngFor="let funcao of funcoes" [value]="funcao.id">{{funcao.nome}}</option>
+        </select>
+      </div>
+      <br>
+      <div >
+        <button type="button" (click)="salvar()" [disabled]="!cadastro.valid" class="btn btn-outline-success">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
